@@ -15,9 +15,41 @@ for(initialization; condition; expression){
 - condition- This evaluates to either true or false. For as long as it is true, the loop continues otherwise the loops breaks.
 - expression- This is an increment counter.
 
-`Note:` Please note that all these 3 parameters are optional.
+In a natural language, what you are basically saying is:
 
-In a natural language: Hey loop, start a iterating at the value defined in initialization and in every iteration increase by the value specified at expression and continue doing so until the condition specified at condition evaluates to false.
+Hey loop, start an iteration at the value defined in `initialization` and after every execution of the code in the block scope of the loop, increase by the value specified at `expression` (normally one by one) and continue doing so until the condition specified at `condition` evaluates to false. i.e
+
+```javascript
+for (let i = 0; i <= 5; i++){
+    //code
+}
+
+/*
+
+Here, whatever code is will be executed 6 times, i.e 
+first when i is 0, second when i is 1, third when i is 2, and so on and so forth
+
+*/
+
+for (let i = 0; i <= 8; i+=5){
+    //code
+}
+
+/*
+
+Here, whatever code is will be executed 2 times, i.e 
+first when i is 0, second when i is 5.
+Note that the expression i+=5 means an increment of i by 5 after every iteration
+The loop will not go past 2 because a third iteration is not qualified by the stated condition 
+
+*/
+```
+
+`Note:` Please note that all these 3 parameters are optional => See commit #2
+
+`Note:` One can always use nested loops => See commit #2, #3
+
+
 
 ## Purpose of this repository
 
@@ -31,7 +63,7 @@ If I should state the scenarios for which I think loops are predominantly applie
 
 ### Some points of information:
 - A fair deal of these concepts are learnt from [MDN Website](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
-- I intend to use practical demos. Now, I know there are a myriad of options taht arrive at the same results for which you shall herein see. Please share them for it will be interesting to explore the various possibilities.
+- I intend to use practical demos. Now, I know there is a myriad of options that can arrive at the same results which you will herein see. Please share them for it will be interesting to explore the various possibilities.
 - Please pardon any 'git bad practice' that you may come across in this Repo (you're likely to meet them). Kindly be sure to point them out.
 - My choice of writing about loops is because at the time of writing this I was covering that topic with my 'student.'
 - This first series will not necessarily require DOM interactivity hence you can use node js for the JS_Loops.js file.
@@ -46,3 +78,4 @@ If I should state the scenarios for which I think loops are predominantly applie
 ## Commits-
 1. Log numbers 5 to 12
 2. Log the first 10 Prime numbers
+3. Retun all the alphabets that are missing in a sentence
