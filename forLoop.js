@@ -1,30 +1,206 @@
-// From a given sentence, list all the missing alphabets in an array
-
-const alphabets = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
-    'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
-]
-
-const jsonMissingAlphabets = []
-
-const testSentence = (sentence = '') => {
-    sentence = sentence.toUpperCase()
-    sentence = sentence.trim()
-    let tempStore = 0
-
-    for (let i = 0; i <= 25; i++) {
-        for (let j = 0; j <= sentence.length; j++) {
-            if (alphabets[i] === sentence[j]) {
-                tempStore++
-                break
-            }
-            if (alphabets[i] !== sentence[j] && j === sentence.length - 1) {
-                jsonMissingAlphabets[i - tempStore] = alphabets[i]
-            }
-            continue
-        }
-    }
-    return jsonMissingAlphabets
+const countries = {
+    "features": [
+        { "type": "Feature", "properties": { "id": "AFG", "name": "Afghanistan" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "AGO", "name": "Angola" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "ALB", "name": "Albania" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "ARE", "name": "United Arab Emirates" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "ARG", "name": "Argentina" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "ARM", "name": "Armenia" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "ATA", "name": "Antarctica" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "ATF", "name": "French Southern and Antarctic Lands" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "AUS", "name": "Australia" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "AUT", "name": "Austria" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "AZE", "name": "Azerbaijan" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "BDI", "name": "Burundi" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "BEL", "name": "Belgium" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "BEN", "name": "Benin" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "BFA", "name": "Burkina Faso" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "BGD", "name": "Bangladesh" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "BGR", "name": "Bulgaria" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "BHS", "name": "The Bahamas" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "BIH", "name": "Bosnia and Herzegovina" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "BLR", "name": "Belarus" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "BLZ", "name": "Belize" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "BMU", "name": "Bermuda" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "BOL", "name": "Bolivia" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "BRA", "name": "Brazil" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "BRN", "name": "Brunei" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "BTN", "name": "Bhutan" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "BWA", "name": "Botswana" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "CAF", "name": "Central African Republic" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "CAN", "name": "Canada" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "CHE", "name": "Switzerland" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "CHL", "name": "Chile" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "CHN", "name": "China" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "CIV", "name": "Ivory Coast" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "CMR", "name": "Cameroon" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "COD", "name": "Democratic Republic of the Congo" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "COG", "name": "Republic of the Congo" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "COL", "name": "Colombia" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "CRI", "name": "Costa Rica" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "CUB", "name": "Cuba" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "-99", "name": "Northern Cyprus" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "CYP", "name": "Cyprus" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "CZE", "name": "Czech Republic" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "DEU", "name": "Germany" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "DJI", "name": "Djibouti" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "DNK", "name": "Denmark" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "DOM", "name": "Dominican Republic" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "DZA", "name": "Algeria" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "ECU", "name": "Ecuador" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "EGY", "name": "Egypt" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "ERI", "name": "Eritrea" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "ESP", "name": "Spain" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "EST", "name": "Estonia" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "ETH", "name": "Ethiopia" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "FIN", "name": "Finland" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "FJI", "name": "Fiji" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "FLK", "name": "Falkland Islands" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "FRA", "name": "France" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "GAB", "name": "Gabon" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "GBR", "name": "United Kingdom" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "GEO", "name": "Georgia" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "GHA", "name": "Ghana" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "GIN", "name": "Guinea" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "GMB", "name": "Gambia" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "GNB", "name": "Guinea Bissau" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "GNQ", "name": "Equatorial Guinea" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "GRC", "name": "Greece" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "GRL", "name": "Greenland" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "GTM", "name": "Guatemala" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "GUF", "name": "French Guiana" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "GUY", "name": "Guyana" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "HND", "name": "Honduras" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "HRV", "name": "Croatia" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "HTI", "name": "Haiti" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "HUN", "name": "Hungary" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "IDN", "name": "Indonesia" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "IND", "name": "India" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "IRL", "name": "Ireland" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "IRN", "name": "Iran" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "IRQ", "name": "Iraq" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "ISL", "name": "Iceland" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "ISR", "name": "Israel" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "ITA", "name": "Italy" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "JAM", "name": "Jamaica" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "JOR", "name": "Jordan" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "JPN", "name": "Japan" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "KAZ", "name": "Kazakhstan" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "KEN", "name": "Kenya" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "KGZ", "name": "Kyrgyzstan" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "KHM", "name": "Cambodia" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "KOR", "name": "South Korea" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "CS-KM", "name": "Kosovo" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "KWT", "name": "Kuwait" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "LAO", "name": "Laos" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "LBN", "name": "Lebanon" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "LBR", "name": "Liberia" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "LBY", "name": "Libya" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "LKA", "name": "Sri Lanka" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "LSO", "name": "Lesotho" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "LTU", "name": "Lithuania" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "LUX", "name": "Luxembourg" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "LVA", "name": "Latvia" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "MAR", "name": "Morocco" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "MDA", "name": "Moldova" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "MDG", "name": "Madagascar" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "MEX", "name": "Mexico" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "MKD", "name": "Macedonia" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "MLI", "name": "Mali" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "MLT", "name": "Malta" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "MMR", "name": "Myanmar" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "MNE", "name": "Montenegro" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "MNG", "name": "Mongolia" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "MOZ", "name": "Mozambique" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "MRT", "name": "Mauritania" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "MWI", "name": "Malawi" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "MYS", "name": "Malaysia" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "NAM", "name": "Namibia" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "NCL", "name": "New Caledonia" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "NER", "name": "Niger" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "NGA", "name": "Nigeria" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "NIC", "name": "Nicaragua" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "NLD", "name": "Netherlands" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "NOR", "name": "Norway" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "NPL", "name": "Nepal" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "NZL", "name": "New Zealand" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "OMN", "name": "Oman" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "PAK", "name": "Pakistan" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "PAN", "name": "Panama" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "PER", "name": "Peru" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "PHL", "name": "Philippines" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "PNG", "name": "Papua New Guinea" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "POL", "name": "Poland" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "PRI", "name": "Puerto Rico" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "PRK", "name": "North Korea" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "PRT", "name": "Portugal" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "PRY", "name": "Paraguay" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "QAT", "name": "Qatar" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "ROU", "name": "Romania" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "RUS", "name": "Russia" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "RWA", "name": "Rwanda" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "ESH", "name": "Western Sahara" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "SAU", "name": "Saudi Arabia" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "SDN", "name": "Sudan" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "SSD", "name": "South Sudan" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "SEN", "name": "Senegal" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "SLB", "name": "Solomon Islands" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "SLE", "name": "Sierra Leone" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "SLV", "name": "El Salvador" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "-99", "name": "Somaliland" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "SOM", "name": "Somalia" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "SRB", "name": "Republic of Serbia" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "SUR", "name": "Suriname" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "SVK", "name": "Slovakia" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "SVN", "name": "Slovenia" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "SWE", "name": "Sweden" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "SWZ", "name": "Swaziland" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "SYR", "name": "Syria" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "TCD", "name": "Chad" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "TGO", "name": "Togo" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "THA", "name": "Thailand" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "TJK", "name": "Tajikistan" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "TKM", "name": "Turkmenistan" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "TLS", "name": "East Timor" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "TTO", "name": "Trinidad and Tobago" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "TUN", "name": "Tunisia" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "TUR", "name": "Turkey" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "TWN", "name": "Taiwan" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "TZA", "name": "United Republic of Tanzania" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "UGA", "name": "Uganda" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "UKR", "name": "Ukraine" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "URY", "name": "Uruguay" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "USA", "name": "United States of America" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "UZB", "name": "Uzbekistan" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "VEN", "name": "Venezuela" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "VNM", "name": "Vietnam" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "VUT", "name": "Vanuatu" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "PSE", "name": "West Bank" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "YEM", "name": "Yemen" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "ZAF", "name": "South Africa" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "ZMB", "name": "Zambia" }, "geometry": null },
+        { "type": "Feature", "properties": { "id": "ZWE", "name": "Zimbabwe" }, "geometry": null }
+    ]
 }
 
-// console.log(testSentence('The sun rises in the east, and sets in the west'))
-console.log(testSentence('The quick brown fox jumped over the lazy dog'))
+const searchFor = 'au'
+const searchCountry = (nameStartWith = '') => {
+    let countriesFound = []
+    let tempArrayIndex = 0
+    nameStartWith = nameStartWith.toLowerCase()
+
+    for (let names = 0; names <= countries.features.length - 1; names++) {
+        let countryNames = (countries.features[names].properties.name).toLowerCase()
+
+        if (nameStartWith === countryNames.substring(0, nameStartWith.length)) {
+            countriesFound[names - tempArrayIndex] = countries.features[names].properties.name
+        } else {
+            tempArrayIndex++
+        }
+    }
+    return countriesFound
+}
+
+for (let i of searchCountry(searchFor)) {
+    console.log(i)
+}

@@ -79,3 +79,7 @@ If I should state the scenarios for which I think loops are predominantly applie
 1. Log numbers 5 to 12
 2. Log the first 10 Prime numbers
 3. Retun all the alphabets that are missing in a sentence
+4. List all countries with names starting with the stipulated letter or set of letters. => `Tags`
+    - substring method;
+    - toLowercase();
+    - string length;
